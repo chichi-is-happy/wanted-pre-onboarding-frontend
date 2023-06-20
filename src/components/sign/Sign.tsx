@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type signInputType = {
   email: {
@@ -21,7 +22,16 @@ const signInitialData: signInputType = {
     isValid: false,
   },
 };
-const Sign = () => {
+
+interface Props {
+  type: string;
+  handleSubmit: any;
+}
+
+const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
+  const signButtonId = `${type}-button`;
+
+  const navigate = useNavigate();
   const [signInput, setSignInput] = useState<signInputType>(signInitialData);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, label: string) => {
@@ -57,8 +67,23 @@ const Sign = () => {
         <div className="flex h-full items-center">
           <div className="flex flex-col w-2/5 p-10 border-r h-full justify-center ">
             <div className="flex-col">
-              <h1 className="text-xl text-red-200">어서오세요</h1>
-              <p>로그인이 필요합니다</p>
+              {type === "signin" ? (
+                <>
+                  <h1 className="text-xl text-red-200">어서오세요</h1>
+                  <p>로그인이 필요합니다</p>
+                </>
+              ) : (
+                <>
+                  <h1 className="text-xl text-red-200">회원가입</h1>
+                  <p>이미 가입하셨나요?</p>
+                  <button
+                    className="text-sm"
+                    onClick={() => navigate("/signin")}
+                  >
+                    로그인 하기
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
@@ -84,17 +109,29 @@ const Sign = () => {
             </div>
 
             <button
-              data-testid="signin-button"
+              data-testid={signButtonId}
               className="
               base_button mt-6
               disabled:opacity-50"
               type="submit"
               disabled={!signInput.email.isValid || !signInput.password.isValid}
+              onClick={handleSubmit}
             >
-              로그인
+              {type === "signup" ? <p>가입하기</p> : <p>로그인</p>}
             </button>
-            <p className="mt-7">계정이 없으신가요? 지금 바로 만들어보세요</p>
-            <button className="base_button"> 회원 가입하기</button>
+            {type === "signin" && (
+              <>
+                <p className="mt-7">
+                  계정이 없으신가요? 지금 바로 만들어보세요
+                </p>
+                <button
+                  className="base_button"
+                  onClick={() => navigate("/signup")}
+                >
+                  회원 가입하기
+                </button>
+              </>
+            )}
           </form>
         </div>
       </main>
