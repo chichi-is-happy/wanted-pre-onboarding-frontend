@@ -1,13 +1,24 @@
 import React from "react";
 import Sign from "../components/sign/Sign";
 import { useNavigate } from "react-router-dom";
+import { SignProp } from "../types/sign";
+import { signIn } from "../api/sign";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    // 200 응답을 받을 시 로그인을 진행
-    // 아닐 경우 텍스트나 alert로 표기, 에러 출력
-    navigate("/signin");
+
+  const handleSubmit = async ({ email, password }: SignProp) => {
+    try {
+      const { status, data } = await signIn({ email, password });
+      if (status === 200) {
+        localStorage.setItem("access_token", data!.access_token);
+        navigate("/todo");
+        console.log("통신 성공");
+      }
+    } catch (error) {
+      console.error("에러:", error);
+      alert("로그인에 실패했습니다.");
+    }
   };
 
   return (

@@ -87,7 +87,7 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
             </div>
           </div>
 
-          <form className="flex w-3/5 flex-col p-10 h-full justify-center">
+          <div className="flex w-3/5 flex-col p-10 h-full justify-center">
             <div className="flex flex-col input-field-wrapper mb-3">
               <label className="username">아이디</label>
               <input
@@ -115,7 +115,12 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
               disabled:opacity-50"
               type="submit"
               disabled={!signInput.email.isValid || !signInput.password.isValid}
-              onClick={handleSubmit}
+              onClick={() =>
+                handleSubmit({
+                  email: signInput.email.value,
+                  password: signInput.password.value,
+                })
+              }
             >
               {type === "signup" ? <p>가입하기</p> : <p>로그인</p>}
             </button>
@@ -132,7 +137,7 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
                 </button>
               </>
             )}
-          </form>
+          </div>
         </div>
       </main>
     </React.Fragment>
