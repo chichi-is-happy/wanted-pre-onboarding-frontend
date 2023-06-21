@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sign from "../components/sign/Sign";
 import { useNavigate } from "react-router-dom";
 import { SignProp } from "../types/sign";
 import { signIn } from "../api/sign";
+import useRedirect from "../hooks/useRedirect";
 
 const SignIn = () => {
   const navigate = useNavigate();
+
+  useRedirect();
 
   const handleSubmit = async ({ email, password }: SignProp) => {
     try {
