@@ -26,9 +26,9 @@ export const signIn = async ({
       data,
     };
   } catch (error: unknown) {
-    console.error("에러:", (error as any).response.data);
+    console.error("에러:", (error as any).response?.data);
     return {
-      status: -1,
+      status: (error as any).response?.status || 500,
     };
   }
 };
@@ -55,9 +55,9 @@ export const signUp = async ({
       status,
     };
   } catch (error: unknown) {
-    console.error("에러:", (error as any).response.data);
+    console.error("에러:", (error as any).response?.data);
     return {
-      status: -1,
+      status: (error as any).response?.status || 500,
     };
   }
 };
