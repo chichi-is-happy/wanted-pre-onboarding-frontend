@@ -6,6 +6,7 @@ import TodoCreate from "../components/todo/TodoCreate";
 import { TodoContextProvider } from "../context/todoContexts";
 
 const Todo = () => {
+  useRedirect();
   return (
     <TodoContextProvider>
       <main className="base_layout">
