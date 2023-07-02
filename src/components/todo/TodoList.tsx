@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TodoContext } from "../../context/todoContext";
+import { TodoContext } from "../../context/todoContexts";
 
 const TodoList = () => {
   const todos = useContext(TodoContext).items;
+
   return (
     <React.Fragment>
       {todos.map((todo: any) => (

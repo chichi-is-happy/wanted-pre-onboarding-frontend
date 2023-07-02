@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useRedirect from "../hooks/useRedirect";
 import TodoList from "../components/todo/TodoList";
 import TodoCreate from "../components/todo/TodoCreate";
-import { TodoContextProvider } from "../context/todoContext";
+import { TodoContextProvider } from "../context/todoContexts";
 
 const Todo = () => {
   return (
