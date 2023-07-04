@@ -43,4 +43,8 @@
   input {
     @apply p-2 border rounded-xl outline-none;
   }
+
+  .edit_input {
+    @apply border rounded-xl outline-none w-96;
+  }
 }

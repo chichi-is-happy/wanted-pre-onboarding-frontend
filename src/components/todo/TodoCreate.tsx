@@ -20,15 +20,22 @@ const TodoCreate = () => {
   };
 
   return (
-    <div>
-      <input
-        data-testid="new-todo-input"
-        onKeyDown={submitOnEnter}
-        ref={inputRef}
-      />
-      <button data-testid="new-todo-add-button" onClick={handleButtonClick}>
-        추가
-      </button>
+    <div className="flex w-full mb-8">
+      <>
+        <input
+          className="flex-grow mr-2"
+          data-testid="new-todo-input"
+          onKeyDown={submitOnEnter}
+          ref={inputRef}
+        />
+        <button
+          className="w-1/5 base_button"
+          data-testid="new-todo-add-button"
+          onClick={handleButtonClick}
+        >
+          추가
+        </button>
+      </>
     </div>
   );
 };
