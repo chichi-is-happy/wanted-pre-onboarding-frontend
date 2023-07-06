@@ -73,3 +73,24 @@ export const handleUpdateTodo = async (
     };
   }
 };
+
+export const handleDeleteTodo = async (id: number) => {
+  try {
+    const { status, data } = await axios.delete(`${API_URL}/todos/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    return {
+      status,
+      data,
+    };
+  } catch (error: unknown) {
+    console.error("에러:", (error as any).response?.data);
+    return {
+      status: (error as any).response?.status || 500,
+    };
+  }
+};

@@ -27,6 +27,10 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
     } else alert("수정할 내용을 입력해 주세요.");
   };
 
+  const handleDeleteSubmit = (id: number) => {
+    todos.deleteTodo(id);
+  };
+
   return (
     <li className="mb-2 list-none text-lg" key={id}>
       <label className="flex justify-between w-full items-center">
@@ -61,8 +65,8 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
           ) : (
             <button
               className="border rounded-xl p-2 w-20 mr-3"
-              onClick={() => handleEditButtonClick()}
               data-testid="modify-button"
+              onClick={() => handleEditButtonClick()}
             >
               수정
             </button>
@@ -71,6 +75,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             <button
               className="border rounded-xl p-2 w-20"
               data-testid="cancel-button"
+              onClick={() => handleEditButtonClick()}
             >
               취소
             </button>
@@ -78,6 +83,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             <button
               className="border rounded-xl p-2 w-20"
               data-testid="delete-button"
+              onClick={() => handleDeleteSubmit(id)}
             >
               삭제
             </button>

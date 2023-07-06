@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from "react";
 import { fetchTodos } from "../api/todo";
-import { handleAddTodo, handleUpdateTodo } from "../api/todo";
+import { handleAddTodo, handleUpdateTodo, handleDeleteTodo } from "../api/todo";
 
 export const API_URL = "https://www.pre-onboarding-selection-task.shop";
 
@@ -29,13 +29,14 @@ export interface TodoType {
 // dispatch Context
 export const dispatchContext = React.createContext<TodoDispatchContextType>({
   addTodo: () => {},
-  // deleteTodo,
+  deleteTodo: () => {},
   updateTodo: () => {},
 });
 
 type TodoDispatchContextType = {
   addTodo: (todo: string) => void;
   updateTodo: (todo: string, isCompleted: boolean, id: number) => void;
+  deleteTodo: (id: number) => void;
 };
 
 // const dispatchContextValue: TodoDispatchContextType = {
@@ -93,9 +94,23 @@ export const TodoContextProvider: React.FC<{ children: any }> = (props) => {
     [todoState]
   );
 
+  // Todo 삭제
+  const deleteTodo = useCallback(
+    async (id: number) => {
+      const res = await handleDeleteTodo(id);
+      if (res.status === 204) {
+        const newTodos = todoState.filter((todo) => todo.id !== id);
+        setTodos(newTodos);
+      } else {
+        alert(res.status);
+      }
+    },
+    [todoState]
+  );
+
   const memoizedDispatch = useMemo(() => {
-    return { addTodo, updateTodo };
-  }, [addTodo, updateTodo]);
+    return { addTodo, updateTodo, deleteTodo };
+  }, [addTodo, updateTodo, deleteTodo]);
 
   const contextValue: TodosContextType = {
     items: todoState,
