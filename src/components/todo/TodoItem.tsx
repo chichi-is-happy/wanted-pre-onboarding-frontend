@@ -34,7 +34,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   return (
     <li className="mb-2 list-none text-lg" key={id}>
       <label className="flex justify-between w-full items-center">
-        <div className="flex items-center">
+        <div className="flex items-center flex-grow mr-2">
           <input
             className="mr-2 text-lg w-4 h-4"
             type="checkbox"
@@ -42,7 +42,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
           />
           {edit ? (
             <input
-              className="edit_input"
+              className="edit_input "
               defaultValue={todo}
               data-testid="modify-input"
               ref={inputRef}

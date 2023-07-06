@@ -45,6 +45,6 @@
   }
 
   .edit_input {
-    @apply border rounded-xl outline-none w-96;
+    @apply border rounded-xl outline-none w-full;
   }
 }
