@@ -44,3 +44,32 @@ export const handleAddTodo = async (todo: string) => {
     };
   }
 };
+
+export const handleUpdateTodo = async (
+  todo: string,
+  isCompleted: boolean,
+  id: number
+) => {
+  try {
+    const { status, data } = await axios.put(
+      `${API_URL}/todos/${id}`,
+      { todo, isCompleted },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return {
+      status,
+      data,
+    };
+  } catch (error: unknown) {
+    console.error("에러:", (error as any).response?.data);
+    return {
+      status: (error as any).response?.status || 500,
+    };
+  }
+};

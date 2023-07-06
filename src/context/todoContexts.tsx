@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from "react";
 import { fetchTodos } from "../api/todo";
-import { handleAddTodo } from "../api/todo";
+import { handleAddTodo, handleUpdateTodo } from "../api/todo";
 
 export const API_URL = "https://www.pre-onboarding-selection-task.shop";
 
@@ -30,11 +30,12 @@ export interface TodoType {
 export const dispatchContext = React.createContext<TodoDispatchContextType>({
   addTodo: () => {},
   // deleteTodo,
-  // updateTodo,
+  updateTodo: () => {},
 });
 
 type TodoDispatchContextType = {
   addTodo: (todo: string) => void;
+  updateTodo: (todo: string, isCompleted: boolean, id: number) => void;
 };
 
 // const dispatchContextValue: TodoDispatchContextType = {
@@ -57,6 +58,7 @@ export const TodoContextProvider: React.FC<{ children: any }> = (props) => {
     fetchDatas();
   }, []);
 
+  // Todo 추가
   const addTodo = useCallback(
     async (todo: string) => {
       const res = await handleAddTodo(todo);
@@ -71,9 +73,29 @@ export const TodoContextProvider: React.FC<{ children: any }> = (props) => {
     [todoState]
   );
 
+  // Todo 수정
+  const updateTodo = useCallback(
+    async (todo: string, isCompleted: boolean, id: number) => {
+      const res = await handleUpdateTodo(todo, isCompleted, id);
+      if (res.status === 200) {
+        const { todo, isCompleted } = res.data!;
+        const updatedTodo = todoState.map((el) => {
+          if (el.id === id) {
+            return { ...el, todo, isCompleted };
+          }
+          return el;
+        });
+        setTodos(updatedTodo);
+      } else {
+        alert(res.status);
+      }
+    },
+    [todoState]
+  );
+
   const memoizedDispatch = useMemo(() => {
-    return { addTodo };
-  }, [addTodo]);
+    return { addTodo, updateTodo };
+  }, [addTodo, updateTodo]);
 
   const contextValue: TodosContextType = {
     items: todoState,
