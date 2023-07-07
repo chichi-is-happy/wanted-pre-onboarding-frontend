@@ -47,7 +47,6 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
         ...signInput,
         [label]: { value: value, isValid: true },
       });
-      console.log("변경 확인", label, signInput);
 
       return;
     } else {
@@ -55,7 +54,6 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
         ...signInput,
         [label]: { value: value, isValid: false },
       });
-      console.log("미통과 변경 확인", label, signInput);
 
       return;
     }

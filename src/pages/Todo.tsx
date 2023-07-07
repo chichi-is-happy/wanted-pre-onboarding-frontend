@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import useRedirect from "../hooks/useRedirect";
 import TodoList from "../components/todo/TodoList";
@@ -11,7 +11,6 @@ const Todo = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
-    console.log("로그아웃");
     navigate("/signin");
   };
   return (

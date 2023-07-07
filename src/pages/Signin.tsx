@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Sign from "../components/sign/Sign";
 import { useNavigate } from "react-router-dom";
 import { SignProp } from "../types/sign";

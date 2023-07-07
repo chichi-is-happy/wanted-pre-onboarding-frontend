@@ -20,7 +20,6 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   const handleEditSubmit = () => {
     setEdit(!edit);
     const inputValue = inputRef.current?.value;
-    console.log("inputValue: ", inputValue);
     if (inputValue) {
       todos.updateTodo(inputValue, isCompleted, id);
       setEdit(false);

@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { fetchTodos } from "../api/todo";
 import { handleAddTodo, handleUpdateTodo, handleDeleteTodo } from "../api/todo";
 
@@ -39,10 +33,6 @@ type TodoDispatchContextType = {
   deleteTodo: (id: number) => void;
 };
 
-// const dispatchContextValue: TodoDispatchContextType = {
-//   addTodo: createTodo,
-// };
-
 const getTodosHandler = async () => {
   const { data } = await fetchTodos();
   return data ? data : [];
@@ -66,7 +56,6 @@ export const TodoContextProvider: React.FC<{ children: any }> = (props) => {
       if (res.status === 201) {
         const newTodos = [...todoState, res.data!];
         setTodos(newTodos);
-        console.log(newTodos);
       } else {
         alert(res.status);
       }
