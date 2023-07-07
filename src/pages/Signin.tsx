@@ -16,7 +16,6 @@ const SignIn = () => {
       if (status === 200) {
         localStorage.setItem("access_token", data!.access_token);
         navigate("/todo");
-        console.log("통신 성공");
       }
     } catch (error) {
       console.error("에러:", error);
@@ -26,7 +25,6 @@ const SignIn = () => {
 
   return (
     <React.Fragment>
-      <div>로그인 페이지</div>
       <Sign type="signin" handleSubmit={handleSubmit} />
     </React.Fragment>
   );

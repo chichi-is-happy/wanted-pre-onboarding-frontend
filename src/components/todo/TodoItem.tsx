@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { TodoContext } from "../../context/todoContexts";
+import React, { useContext, useState, useRef, ChangeEvent } from "react";
 import { dispatchContext } from "../../context/todoContexts";
 
 interface Props {
@@ -12,6 +11,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   const todos = useContext(dispatchContext);
   const [edit, setEdit] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isCompletedState, setCompleted] = useState(isCompleted);
 
   const handleEditButtonClick = () => {
     setEdit(!edit);
@@ -31,14 +31,20 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
     todos.deleteTodo(id);
   };
 
+  const handleCheckSubmit = (e: ChangeEvent<HTMLInputElement>) => {
+    setCompleted(e.target.checked);
+    todos.updateTodo(todo, e.target.checked, id);
+  };
+
   return (
     <li className="mb-2 list-none text-lg" key={id}>
-      <label className="flex justify-between w-full items-center">
+      <label className="flex  w-full items-center">
         <div className="flex items-center flex-grow mr-2">
           <input
-            className="mr-2 text-lg w-4 h-4"
+            className="mr-2 text-lg w-4 h-4 flex-none"
             type="checkbox"
-            defaultChecked={isCompleted}
+            checked={isCompletedState}
+            onChange={(e) => handleCheckSubmit(e)}
           />
           {edit ? (
             <input
@@ -48,9 +54,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
               ref={inputRef}
             ></input>
           ) : (
-            <span className={isCompleted ? "line-trough p-2 " : "null"}>
-              {todo}
-            </span>
+            <span className={isCompleted ? "line-through" : ""}>{todo}</span>
           )}
         </div>
         <div className="flex items-center">

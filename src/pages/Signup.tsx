@@ -24,7 +24,6 @@ const SignUp = () => {
 
   return (
     <React.Fragment>
-      <div>회원가입페이지</div>
       <Sign type="signup" handleSubmit={handleSubmit} />
     </React.Fragment>
   );
