@@ -7,11 +7,25 @@ import { TodoContextProvider } from "../context/todoContexts";
 
 const Todo = () => {
   useRedirect();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    console.log("로그아웃");
+    navigate("/signin");
+  };
   return (
     <TodoContextProvider>
       <main className="base_layout">
+        <button
+          className="gray_button absolute top-10 right-20"
+          onClick={() => handleLogout()}
+        >
+          로그아웃
+        </button>
+
         <div className="flex h-full items-center justify-center">
-          <div className="flex flex-col m-10 p-10 border h-4/5 w-3/5 overflow-auto">
+          <div className="flex flex-col m-10 p-10 border h-4/5 w-3/5 overflow-auto rounded-xl">
             <TodoCreate />
             <TodoList />
           </div>
