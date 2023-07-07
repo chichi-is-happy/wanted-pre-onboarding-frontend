@@ -7,14 +7,16 @@ const TodoList = () => {
 
   return (
     <React.Fragment>
-      {todos.map((todo: any) => (
-        <TodoItem
-          key={todo.id}
-          id={todo.id}
-          isCompleted={todo.isCompleted}
-          todo={todo.todo}
-        />
-      ))}
+      <ul>
+        {todos.map((todo: any) => (
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            isCompleted={todo.isCompleted}
+            todo={todo.todo}
+          />
+        ))}
+      </ul>
     </React.Fragment>
   );
 };

@@ -38,14 +38,18 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
 
   return (
     <li className="mb-2 list-none text-lg" key={id}>
-      <label className="flex  w-full items-center">
+      <label className="flex w-full items-center">
         <div className="flex items-center flex-grow mr-2">
           <input
-            className="mr-2 text-lg w-4 h-4 flex-none"
+            className="appearance-none mr-2 text-lg w-4 h-4 flex-none  
+              cursor-pointer rounded-md"
             type="checkbox"
             checked={isCompletedState}
             onChange={(e) => handleCheckSubmit(e)}
           />
+          <div className="checkIcon cursor-pointer">
+            {isCompletedState && "✔︎"}
+          </div>
           {edit ? (
             <input
               className="edit_input "
@@ -60,7 +64,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
         <div className="flex items-center">
           {edit ? (
             <button
-              className="border rounded-xl p-2 w-20 mr-3"
+              className="base_button w-20 mr-3"
               onClick={() => handleEditSubmit()}
               data-testid="submit-button"
             >
@@ -68,7 +72,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             </button>
           ) : (
             <button
-              className="border rounded-xl p-2 w-20 mr-3"
+              className="base_button w-20 mr-3"
               data-testid="modify-button"
               onClick={() => handleEditButtonClick()}
             >
@@ -77,7 +81,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
           )}
           {edit ? (
             <button
-              className="border rounded-xl p-2 w-20"
+              className="gray_button w-20"
               data-testid="cancel-button"
               onClick={() => handleEditButtonClick()}
             >
@@ -85,7 +89,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             </button>
           ) : (
             <button
-              className="border rounded-xl p-2 w-20"
+              className="gray_button w-20"
               data-testid="delete-button"
               onClick={() => handleDeleteSubmit(id)}
             >

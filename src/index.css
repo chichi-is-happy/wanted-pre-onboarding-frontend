@@ -37,7 +37,15 @@
   }
 
   .base_button {
-    @apply p-2 border rounded-xl active:shadow-inner;
+    @apply p-2 border border-red-50 rounded-xl active:shadow-inner hover:bg-red-100 hover:text-white bg-red-200 text-white;
+  }
+
+  .gray_button {
+    @apply p-2 border rounded-xl active:shadow-inner hover:bg-gray-100 hover:text-gray-300 bg-gray-300 text-white;
+  }
+
+  .sign_button {
+    @apply p-2 border rounded-xl active:shadow-inner hover:bg-gray-100 text-gray-500  hover:text-gray-400;
   }
 
   input {
@@ -47,4 +55,10 @@
   .edit_input {
     @apply border rounded-xl outline-none w-full;
   }
+}
+
+.checkIcon {
+  position: absolute;
+  font-size: 25px;
+  color: rgb(255, 223, 222);
 }

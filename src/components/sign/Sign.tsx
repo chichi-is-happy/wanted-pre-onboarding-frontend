@@ -69,15 +69,15 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
             <div className="flex-col">
               {type === "signin" ? (
                 <>
-                  <h1 className="text-xl text-red-200">어서오세요</h1>
+                  <h1 className="text-2xl text-red-200">어서오세요</h1>
                   <p>로그인이 필요합니다</p>
                 </>
               ) : (
                 <>
-                  <h1 className="text-xl text-red-200">회원가입</h1>
+                  <h1 className="text-2xl text-red-200">회원가입</h1>
                   <p>이미 가입하셨나요?</p>
                   <button
-                    className="text-sm"
+                    className="text-sm hover:text-gray-300"
                     onClick={() => navigate("/signin")}
                   >
                     로그인 하기
@@ -91,6 +91,7 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
             <div className="flex flex-col input-field-wrapper mb-3">
               <label className="username">아이디</label>
               <input
+                placeholder="@를 포함한 아이디를 작성해 주세요"
                 data-testid="email-input"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   handleChange(e, "email")
@@ -101,6 +102,8 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
             <div className="flex flex-col input-field-wrapper mb-6">
               <label className="password">비밀번호</label>
               <input
+                placeholder="8글자 이상의 비밀번호를 입력해 주세요"
+                type="password"
                 data-testid="password-input"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   handleChange(e, "password")
@@ -110,9 +113,7 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
 
             <button
               data-testid={signButtonId}
-              className="
-              base_button mt-6
-              disabled:opacity-50"
+              className="base_button mt-6 disabled:opacity-50 disabled:cursor-default disabled:bg-gray-400 "
               type="submit"
               disabled={!signInput.email.isValid || !signInput.password.isValid}
               onClick={() =>
@@ -122,7 +123,11 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
                 })
               }
             >
-              {type === "signup" ? <p>가입하기</p> : <p>로그인</p>}
+              {type === "signup" ? (
+                <p className="text-white">가입하기</p>
+              ) : (
+                <p className="text-white">로그인</p>
+              )}
             </button>
             {type === "signin" && (
               <>
@@ -130,7 +135,7 @@ const Sign = ({ type, handleSubmit }: Props): React.ReactElement => {
                   계정이 없으신가요? 지금 바로 만들어보세요
                 </p>
                 <button
-                  className="base_button"
+                  className="sign_button"
                   onClick={() => navigate("/signup")}
                 >
                   회원 가입하기
