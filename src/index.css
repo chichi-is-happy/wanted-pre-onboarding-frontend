@@ -62,3 +62,17 @@
   font-size: 25px;
   color: rgb(255, 223, 222);
 }
+
+.checkContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  font-weight: bold;
+  color: rgb(255, 223, 222);
+}

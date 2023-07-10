@@ -39,15 +39,17 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
     <li className="mb-2 list-none text-lg" key={id}>
       <label className="flex w-full items-center">
         <div className="flex items-center flex-grow mr-2">
-          <input
-            className="appearance-none mr-2 text-lg w-4 h-4 flex-none  
+          <div className="checkContainer mr-3 w-5 h-5 flex">
+            <input
+              className="appearance-none mr-2 text-lg w-4 h-4 flex-none  
               cursor-pointer rounded-md"
-            type="checkbox"
-            checked={isCompletedState}
-            onChange={(e) => handleCheckSubmit(e)}
-          />
-          <div className="checkIcon cursor-pointer">
-            {isCompletedState && "✔︎"}
+              type="checkbox"
+              checked={isCompletedState}
+              onChange={(e) => handleCheckSubmit(e)}
+            ></input>
+            <div className="checkIcon cursor-pointer">
+              {isCompletedState && "✔︎"}
+            </div>
           </div>
           {edit ? (
             <input
@@ -57,7 +59,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
               ref={inputRef}
             ></input>
           ) : (
-            <span className={isCompleted ? "line-through" : ""}>{todo}</span>
+            <span className={isCompleted ? "completed" : ""}>{todo}</span>
           )}
         </div>
         <div className="flex items-center">
