@@ -8,7 +8,8 @@
     - 테스트용 패스워드 : test1234
 - 실행 방법 : 배포된 [링크](https://wanted-pre-onboarding-frontend-jet.vercel.app/) 로 접속하거나 로컬 서버 구동
     - git clone 후 npm install → npm start 실행
-
+- [Wanted wanted-pre-onboarding-frontend API](https://github.com/walking-sunset/selection-task)을 사용해 제작되었습니다.
+  
 <br>
 <br>
 
