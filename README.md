@@ -1,4 +1,6 @@
-![login_success2](https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/daf101a6-6c7c-44e3-a478-41394dae484e)
+![login_success2](https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/1f727fe7-8afa-4d58-b9ba-83b1be291a13)
+
+
 
 
 - [Wanted - To Do list](https://wanted-pre-onboarding-frontend-jet.vercel.app/)
@@ -53,10 +55,11 @@
     <td>회원가입</td>
   </tr>
   <tr>
-    <td><img width="300" alt="로그인 성공" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/09ce60d3-f129-42d5-b283-a2c44e953fe8"></td>
-    <td><img width="300" alt="회원가입" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/2289ffe1-6514-437d-ad5d-a7e128f3a280"></td>
+    <td><img width="300" alt="로그인 성공" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/1f727fe7-8afa-4d58-b9ba-83b1be291a13"></td>
+    <td><img width="300" alt="회원가입" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/9cf8787e-0d13-4dd5-a1fe-79b814b11ea8"></td>
   </tr>
 </table>
+
 
 - 서버에 등록된 이메일, 비밀번호로 로그인 해야 To-Do 페이지로 이동
 - 이메일 또는 비밀번호를 잘못 입력한 경우
@@ -83,8 +86,8 @@
     <td>TODO 수정 / 삭제</td>
   </tr>
   <tr>
-    <td><img width="300" alt="TODO 추가" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/90c6dbc3-2386-4814-9164-15a36aa41614"></td>
-    <td><img width="300" alt="TODO 수정 및 삭제" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/6cb833f1-147a-4466-9fc8-1ba032ed7789"></td>
+    <td><img width="300" alt="TODO 추가" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/08ea7fe4-c12e-4124-b368-47ed37a80462"></td>
+    <td><img width="300" alt="TODO 수정 및 삭제" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/4c276478-fe13-4ab7-bf05-085933ce7c13"></td>
   </tr>
 </table>
 
