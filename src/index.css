@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: "Nanum Myeongjo";
   font-style: normal;
@@ -28,7 +29,7 @@
 @layer base {
   * {
     font-family: "Pretendard-Regular";
-    color: gray;
+    color: #808080;
   }
 }
 @layer components {
@@ -75,4 +76,22 @@
   text-decoration: line-through;
   font-weight: bold;
   color: rgb(255, 223, 222);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffbfb;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 249, 249);
+  border-radius: 5px;
+  background: linear-gradient(45deg, rgb(255, 232, 231), rgb(251, 240, 240));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 223, 222);
 }

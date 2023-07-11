@@ -24,7 +24,7 @@ const Todo = () => {
         </button>
 
         <div className="flex h-full items-center justify-center">
-          <div className="flex flex-col m-10 p-10 border h-4/5 w-3/5 overflow-auto rounded-xl">
+          <div className="flex flex-col m-10 p-10 border h-4/5 w-3/5 overflow-auto rounded-xl scrollbar">
             <TodoCreate />
             <TodoList />
           </div>
