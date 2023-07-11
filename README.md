@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+![login_success2](https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/1f727fe7-8afa-4d58-b9ba-83b1be291a13)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+- [Wanted - To Do list](https://wanted-pre-onboarding-frontend-jet.vercel.app/)
+- TypeScript와 React Context API를 사용, 로그인, 로그아웃, To-Do list를 구현한 프로젝트
+- 보안 상 실제 사용하고 계신 이메일과 패스워드말고 테스트용 이메일, 패스워드 사용을 권장드립니다.
+    - 테스트용 이메일 : [test@login.com](mailto:test@login.com)
+    - 테스트용 패스워드 : test1234
+- 실행 방법 : 배포된 [링크](https://wanted-pre-onboarding-frontend-jet.vercel.app/) 로 접속하거나 로컬 서버 구동
+    - git clone 후 npm install → npm start 실행
+- [Wanted wanted-pre-onboarding-frontend API](https://github.com/walking-sunset/selection-task)을 사용해 제작되었습니다.
+  
+<br>
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ ## 🤍 Skills : 개발 환경 및 기술스택
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React
+- React Router
+- TypeScript
+- Axios
+- React Context API
+- TailwindCSS
+- eslint
 
-### `npm test`
+<br>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 🤍 Directory Structure : 디렉토리 구조
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+└─ src
+  ├─ api : api 모음 파일
+  ├─ components : 컴포넌트 파일
+  ├─ context : context 모음 파일
+  ├─ hooks : 커스텀 훅 파일
+  ├─ pages : 각 페이지
+  └─ types : 타입 지정 파일
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🤍 Key Features : 주요 기능 소개
 
-### `npm run eject`
+### 로그인 / 회원가입
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  <table cellspacing="0" cellpadding="0">
+  <tr>
+  <tr>
+    <td>로그인</td>
+    <td>회원가입</td>
+  </tr>
+  <tr>
+    <td><img width="300" alt="로그인 성공" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/1f727fe7-8afa-4d58-b9ba-83b1be291a13"></td>
+    <td><img width="300" alt="회원가입" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/9cf8787e-0d13-4dd5-a1fe-79b814b11ea8"></td>
+  </tr>
+</table>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 서버에 등록된 이메일, 비밀번호로 로그인 해야 To-Do 페이지로 이동
+- 이메일 또는 비밀번호를 잘못 입력한 경우
+“아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.” 알람 메시지 출력
+- 유효성 검사기능 구현
+    - 이메일 조건 : @ 포함
+    - 비밀번호 조건 : 8자 이상
+    - 입력된 이메일과 비밀번호가 유효성 검사를 통과하지 못한다면 로그인 버튼 비활성화
+- 회원가입 시 동일한 이메일이 존재하면 “다른 이메일을 입력하세요.” 알람 메시지 출력
+- 회원가입이 정상적으로 완료되면 로그인 페이지로 이동
+- 로그인이 정상적으로 완료되면 To-Do 페이지로 이동
+- 로컬 스토리지에 토큰이 있는 상태로 로그인 / 회원가입 페이지에 접속하면 To-Do 페이지로 리다이렉트
+- 로컬 스토리지에 토큰이 없는 상태로 To-Do 페이지에 접속하면 로그인 페이지로 리다이렉트
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<br>
+<br>
 
-## Learn More
+### TODO LIST
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<table cellspacing="0" cellpadding="0">
+  <tr>
+  <tr>
+    <td>TODO 추가</td>
+    <td>TODO 수정 / 삭제</td>
+  </tr>
+  <tr>
+    <td><img width="300" alt="TODO 추가" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/08ea7fe4-c12e-4124-b368-47ed37a80462"></td>
+    <td><img width="300" alt="TODO 수정 및 삭제" src="https://github.com/chichi-is-happy/wanted-pre-onboarding-frontend/assets/107830853/4c276478-fe13-4ab7-bf05-085933ce7c13"></td>
+  </tr>
+</table>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- To-Do 리스트의 내용과 완료 여부가 표시되는 목록 출력
+- 새로운 To-Do 입력 및 추가 가능
+  - To-Do를 추가한 뒤 새로고침을 해도 추가한 To-Do가 목록에 출력 
+- 삭제 기능 구현
+- 수정 기능 구현
+    - 수정 모드에서 취소시 수정한 내용을 초기화, 수정 모드 비활성화
+    - 수정 모드에서 To-Do의 내용을 변경하고 제출하면 수정됨
+    - 체크박스를 통해 완료 여부 수정 가능
+- To-Do LIST 페이지에서 로그아웃 버튼 클릭 시 로컬 스토리지의 액세스 토큰 삭제 후, login 페이지로 이동 
+<br>
+<br>
