@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, ChangeEvent } from "react";
+import React, { useContext, useState, ChangeEvent } from "react";
 import { dispatchContext } from "../../context/todoContexts";
 
 interface Props {
@@ -9,21 +9,25 @@ interface Props {
 
 const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   const todos = useContext(dispatchContext);
-  const [edit, setEdit] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [editMode, setEditMode] = useState(false);
+  const [editTodo, setEditTodo] = useState<string>("");
   const [isCompletedState, setCompleted] = useState(isCompleted);
 
   const handleEditButtonClick = () => {
-    setEdit(!edit);
+    setEditMode(!editMode);
   };
 
   const handleEditSubmit = () => {
-    setEdit(!edit);
-    const inputValue = inputRef.current?.value;
-    if (inputValue) {
-      todos.updateTodo(inputValue, isCompleted, id);
-      setEdit(false);
+    if (editTodo) {
+      todos.updateTodo(editTodo, isCompleted, id);
+      setEditMode(false);
+      setEditTodo("");
     } else alert("수정할 내용을 입력해 주세요.");
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditTodo(e.target.value);
+    console.log("editTodo: ", editTodo);
   };
 
   const handleDeleteSubmit = (id: number) => {
@@ -33,6 +37,14 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   const handleCheckSubmit = (e: ChangeEvent<HTMLInputElement>) => {
     setCompleted(e.target.checked);
     todos.updateTodo(todo, e.target.checked, id);
+  };
+
+  const submitOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing) return;
+    if (e.key === "Enter") {
+      handleEditSubmit();
+      console.log("submitOnEnter 작동");
+    }
   };
 
   return (
@@ -51,19 +63,20 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
               {isCompletedState && "✔︎"}
             </div>
           </div>
-          {edit ? (
+          {editMode ? (
             <input
               className="edit_input "
               defaultValue={todo}
               data-testid="modify-input"
-              ref={inputRef}
+              onKeyDown={submitOnEnter}
+              onChange={(e) => handleChange(e)}
             ></input>
           ) : (
             <span className={isCompleted ? "completed" : ""}>{todo}</span>
           )}
         </div>
         <div className="flex items-center">
-          {edit ? (
+          {editMode ? (
             <button
               className="base_button w-20 mr-3"
               onClick={() => handleEditSubmit()}
@@ -80,7 +93,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
               수정
             </button>
           )}
-          {edit ? (
+          {editMode ? (
             <button
               className="gray_button w-20"
               data-testid="cancel-button"
