@@ -78,7 +78,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
         <div className="flex items-center">
           {editMode ? (
             <button
-              className="base_button w-20 mr-3"
+              className="base_button w-20 mr-3  border-gray-50  bg-blue-300 hover:bg-blue-200 "
               onClick={() => handleEditSubmit()}
               data-testid="submit-button"
             >
@@ -86,7 +86,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             </button>
           ) : (
             <button
-              className="base_button w-20 mr-3"
+              className="base_button w-20 mr-3 "
               data-testid="modify-button"
               onClick={() => handleEditButtonClick()}
             >
@@ -95,7 +95,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
           )}
           {editMode ? (
             <button
-              className="gray_button w-20"
+              className="gray_button w-20 border-gray-50 hover:bg-gray-50 bg-gray-200 "
               data-testid="cancel-button"
               onClick={() => handleEditButtonClick()}
             >
@@ -103,7 +103,7 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             </button>
           ) : (
             <button
-              className="gray_button w-20"
+              className="gray_button w-20 hover:bg-red-400 hover:text-white"
               data-testid="delete-button"
               onClick={() => handleDeleteSubmit(id)}
             >
