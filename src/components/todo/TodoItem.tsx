@@ -1,6 +1,9 @@
-import React, { useContext, useState, ChangeEvent } from "react";
+import React, { useContext, useState, ChangeEvent, useEffect } from "react";
 import { dispatchContext } from "../../context/todoContexts";
-
+import { LuEdit } from "react-icons/lu";
+import { MdDelete } from "react-icons/md";
+import { BsCheck2Circle } from "react-icons/bs";
+import { AiOutlineClose } from "react-icons/ai";
 interface Props {
   id: number;
   isCompleted: boolean;
@@ -12,10 +15,15 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   const [editMode, setEditMode] = useState(false);
   const [editTodo, setEditTodo] = useState<string>("");
   const [isCompletedState, setCompleted] = useState(isCompleted);
+  const [isHovered, setIsHover] = useState(false);
 
   const handleEditButtonClick = () => {
     setEditMode(!editMode);
   };
+
+  useEffect(() => {
+    console.log("isHovered: ", isHovered);
+  }, [isHovered]);
 
   const handleEditSubmit = () => {
     if (editTodo) {
@@ -48,7 +56,12 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
   };
 
   return (
-    <li className="mb-2 list-none text-lg" key={id}>
+    <li
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      className="mb-2 list-none text-lg"
+      key={id}
+    >
       <label className="flex w-full items-center">
         <div className="flex items-center flex-grow mr-2">
           <div className="checkContainer mr-3 w-5 h-5 flex">
@@ -75,22 +88,24 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
             <span className={isCompleted ? "completed" : ""}>{todo}</span>
           )}
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center w-20 h-10">
           {editMode ? (
             <button
-              className="base_button w-20 mr-3  border-gray-50  bg-blue-300 hover:bg-blue-200 "
+              className="base_button w-20 mr-3  border-gray-50  bg-blue-200 hover:bg-blue-200 "
               onClick={() => handleEditSubmit()}
               data-testid="submit-button"
             >
-              제출
+              <BsCheck2Circle />
             </button>
           ) : (
             <button
-              className="base_button w-20 mr-3 "
+              className={`${
+                isHovered ? "" : "hidden"
+              } gray_button w-20 mr-3 flex items-center justify-center`}
               data-testid="modify-button"
               onClick={() => handleEditButtonClick()}
             >
-              수정
+              <LuEdit />
             </button>
           )}
           {editMode ? (
@@ -99,15 +114,19 @@ const TodoItem = ({ id, isCompleted, todo }: Props): React.ReactElement => {
               data-testid="cancel-button"
               onClick={() => handleEditButtonClick()}
             >
-              취소
+              <AiOutlineClose />
             </button>
           ) : (
             <button
-              className="gray_button w-20 hover:bg-red-400 hover:text-white"
+              className={`${
+                isHovered ? "" : "hidden"
+              } gray_button w-20 hover:bg-red-400 hover:text-white flex items-center justify-center`}
               data-testid="delete-button"
               onClick={() => handleDeleteSubmit(id)}
             >
-              삭제
+              <span className="hover:text-white text-white">
+                <MdDelete className="hover:text-white text-white" />
+              </span>
             </button>
           )}
         </div>
